@@ -15,7 +15,8 @@ public class Regex {
         boolean check = true;
         while (check) {
             System.out.println("Select:\n" + "1.Check First Name\n" + "2.Check Last Name\n"
-                    + "3.Check EmailID\n" + "4.Check Mobile Format\n"+ "5.Exit\n");
+                    + "3.Check EmailID\n" + "4.Check Mobile Format\n"+ "5.Check Password\n"
+                    + "6.Exit\n");
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1:
@@ -35,11 +36,24 @@ public class Regex {
                     regex.checkMobileNumber(scanner.nextLine());
                     break;
                 case 5:
+                    System.out.println("Enter password:");
+                    regex.checkPassword(scanner.nextLine());
+                    break;
+                case 6:
                     check = false;
                     break;
                 default:
                     System.out.println("Compile Again!");
             }
+        }
+    }
+
+    private void checkPassword(String password) {
+        boolean value = Pattern.matches("[0-9]{8,}", password);
+        if (value) {
+            System.out.println("Valid Password : " + password);
+        } else {
+            System.out.println("Invalid Password: " + password);
         }
     }
 
