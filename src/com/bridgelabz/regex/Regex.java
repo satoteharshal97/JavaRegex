@@ -14,7 +14,8 @@ public class Regex {
         System.out.println("Choose an appropriate option: ");
         boolean check = true;
         while (check) {
-            System.out.println("Select:\n" + "1.Check First Name\n" + "2.Check Last Name\n" + "3.Exit\n");
+            System.out.println("Select:\n" + "1.Check First Name\n" + "2.Check Last Name\n"
+                    + "3.Check EmailID\n" + "4.Exit\n");
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1:
@@ -26,11 +27,24 @@ public class Regex {
                     regex.checkName(scanner.nextLine());
                     break;
                 case 3:
+                    System.out.println("Enter emailId:");
+                    regex.checkEmailId(scanner.nextLine());
+                    break;
+                case 4:
                     check = false;
                     break;
                 default:
                     System.out.println("Compile Again!");
             }
+        }
+    }
+
+    private void checkEmailId(String email) {
+        boolean variable = Pattern.matches("[a-z]+[.]?[a-z]*[@][a-z]+[.][a-z]{2,4}[.]?[a-z]*",email.toLowerCase());
+        if (variable) {
+            System.out.println("Valid email");
+        } else {
+            System.out.println("Invalid email");
         }
     }
 
